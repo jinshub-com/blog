@@ -6,20 +6,20 @@ export const en = defineConfig({
   themeConfig: {
     nav: [
       {
-        text: 'Rust',
-        link: '/rust/what-is-rust',
-        activeMatch: '/rust/'
+        text: 'Rust Book Quizzes',
+        link: '/rust-book-quizzes/introduction',
+        activeMatch: '/rust-book-quizzes/'
       },
     ],
     sidebar: {
-      '/rust/': {
-        base: '/rust/', items: [
+      '/rust-book-quizzes/': {
+        base: '/rust-book-quizzes/', items: [
           {
-            text: 'Introduction',
+            text: 'Rust Book Quizzes',
             collapsed: false,
             items: [
-              { text: 'What is Rust?', link: 'what-is-rust' },
-              { text: 'Summaries & Quizzes', link: 'summaries-quizzes' },
+              { text: 'Introduction', link: 'introduction' },
+              { text: 'Getting Started', link: '1-getting-started' },
             ]
           },
         ]

@@ -8,6 +8,6 @@ hero:
   actions:
     - theme: brand
       text: Rust
-      link: /rust/what-is-rust
+      link: /rust-book-quizzes/introduction
 ---
 
