@@ -1,4 +1,29 @@
 <script setup lang="ts">
+/* 
+Documentation:
+
+Props:
+- id: string, the id of the quiz, used to store the selected options in localStorage
+- title: string, the title of the quiz, displayed at the top
+- options: string[], the options of the quiz, displayed as the choices
+- answers: string[], the answers of the quiz, used to check if the submission is correct
+
+Slots:
+- description: the description of the quiz, displayed below the title
+- solution: the solution of the quiz, displayed when the user clicks the "Show solution" button
+
+Usage:
+```vue
+<Quiz id="1" title="Quiz 1" :options="['A', 'B', 'C']" :answers="['A']">
+  <template #description>
+    This is a quiz with one correct answer.
+  </template>
+  <template #solution>
+    The correct answer is A.
+  </template>
+</Quiz>
+```
+*/
 import { defineProps, ref, computed, watch } from 'vue'
 
 interface Props {
