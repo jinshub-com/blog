@@ -36,7 +36,7 @@ describe('True or False quiz', () => {
   }
   let wrapper = mount(Quiz, { props })
   beforeEach(() => { wrapper = mount(Quiz, { props }) })
-  afterEach(() => { wrapper.unmount() })
+  afterEach(() => { wrapper.unmount(), localStorage.clear() })
 
   test('Solution title and content exist', () => {
     expect(wrapper.find(detailsSelector).exists()).toBe(true)
@@ -97,7 +97,7 @@ describe('Multiple choice quiz with multiple answers', () => {
   }
   let wrapper = mount(Quiz, { props })
   beforeEach(() => { wrapper = mount(Quiz, { props }) })
-  afterEach(() => { wrapper.unmount() })
+  afterEach(() => { wrapper.unmount(), localStorage.clear() })
 
   // multiple choice options
   test('Options exist', () => {
@@ -116,6 +116,11 @@ describe('Multiple choice quiz with multiple answers', () => {
     await wrapper.vm.$nextTick()
     expect(wrapper.find(submissionResultSelector).text()).toContain('Correct')
     expect(wrapper.find(submissionResultSelector).text()).not.toContain('Incorrect')
+    // correct answers are highlighted with green while selected incorrect answers are highlighted with red
+    expect(wrapper.findAll(optionSelector)[0].element.classList).toContain('correct')
+    expect(wrapper.findAll(optionSelector)[1].element.classList).toContain('correct')
+    expect(wrapper.findAll(optionSelector)[2].element.classList).not.toContain('correct')
+    expect(wrapper.findAll(optionSelector)[3].element.classList).not.toContain('correct')
   })
 
   // submit with incorrect answer
@@ -127,6 +132,11 @@ describe('Multiple choice quiz with multiple answers', () => {
     await wrapper.vm.$nextTick()
     expect(wrapper.find(submissionResultSelector).text()).toContain('Incorrect')
     expect(wrapper.find(submissionResultSelector).text()).not.toContain('Correct')
+    // correct answers are highlighted with green while selected incorrect answers are highlighted with red
+    expect(wrapper.findAll(optionSelector)[0].element.classList).toContain('correct')
+    expect(wrapper.findAll(optionSelector)[1].element.classList).toContain('correct')
+    expect(wrapper.findAll(optionSelector)[2].element.classList).toContain('incorrect')
+    expect(wrapper.findAll(optionSelector)[3].element.classList).not.toContain('correct')
   })
 
   // submit with incorrect answer
@@ -136,6 +146,12 @@ describe('Multiple choice quiz with multiple answers', () => {
     await wrapper.vm.$nextTick()
     expect(wrapper.find(submissionResultSelector).text()).toContain('Incorrect')
     expect(wrapper.find(submissionResultSelector).text()).not.toContain('Correct')
+    // correct answers are highlighted with green while selected incorrect answers are highlighted with red
+    expect(wrapper.findAll(optionSelector)[0].element.classList).toContain('correct')
+    expect(wrapper.findAll(optionSelector)[1].element.classList).toContain('correct')
+    expect(wrapper.findAll(optionSelector)[2].element.classList).toContain('incorrect')
+    expect(wrapper.findAll(optionSelector)[2].element.classList).not.toContain('correct')
+    expect(wrapper.findAll(optionSelector)[3].element.classList).not.toContain('correct')
   })
 
   // submit with incorrect answer
@@ -145,6 +161,13 @@ describe('Multiple choice quiz with multiple answers', () => {
     await wrapper.vm.$nextTick()
     expect(wrapper.find(submissionResultSelector).text()).toContain('Incorrect')
     expect(wrapper.find(submissionResultSelector).text()).not.toContain('Correct')
+    // correct answers are highlighted with green while selected incorrect answers are highlighted with red
+    expect(wrapper.findAll(optionSelector)[0].element.classList).toContain('correct')
+    expect(wrapper.findAll(optionSelector)[1].element.classList).toContain('correct')
+    expect(wrapper.findAll(optionSelector)[2].element.classList).not.toContain('correct')
+    expect(wrapper.findAll(optionSelector)[2].element.classList).not.toContain('incorrect')
+    expect(wrapper.findAll(optionSelector)[3].element.classList).not.toContain('correct')
+    expect(wrapper.findAll(optionSelector)[3].element.classList).not.toContain('incorrect')
   })
 
   // submit with incorrect answer
@@ -154,6 +177,13 @@ describe('Multiple choice quiz with multiple answers', () => {
     await wrapper.vm.$nextTick()
     expect(wrapper.find(submissionResultSelector).text()).toContain('Incorrect')
     expect(wrapper.find(submissionResultSelector).text()).not.toContain('Correct')
+    // correct answers are highlighted with green while selected incorrect answers are highlighted with red
+    expect(wrapper.findAll(optionSelector)[0].element.classList).toContain('correct')
+    expect(wrapper.findAll(optionSelector)[1].element.classList).toContain('correct')
+    expect(wrapper.findAll(optionSelector)[2].element.classList).not.toContain('correct')
+    expect(wrapper.findAll(optionSelector)[2].element.classList).not.toContain('incorrect')
+    expect(wrapper.findAll(optionSelector)[3].element.classList).not.toContain('correct')
+    expect(wrapper.findAll(optionSelector)[3].element.classList).not.toContain('incorrect')
   })
 })
 
@@ -166,7 +196,7 @@ describe('Multiple choice quiz with single answer', () => {
   }
   let wrapper = mount(Quiz, { props })
   beforeEach(() => { wrapper = mount(Quiz, { props }) })
-  afterEach(() => { wrapper.unmount() })
+  afterEach(() => { wrapper.unmount(), localStorage.clear() })
 
   // multiple choice options
   test('Options exist', () => {
@@ -208,7 +238,7 @@ describe('Quiz with description and solution', () => {
   const solution = 'This is the solution.'
   let wrapper = mount(Quiz, { props, slots: { description, solution } })
   beforeEach(() => { wrapper = mount(Quiz, { props, slots: { description, solution } }) })
-  afterEach(() => { wrapper.unmount() })
+  afterEach(() => { wrapper.unmount(), localStorage.clear() })
 
   test('Description and solution slots exist', () => {
     expect(wrapper.find(descriptionSelector).exists()).toBe(true)
@@ -227,7 +257,7 @@ describe('Quiz without description and solution', () => {
   }
   let wrapper = mount(Quiz, { props })
   beforeEach(() => { wrapper = mount(Quiz, { props }) })
-  afterEach(() => { wrapper.unmount() })
+  afterEach(() => { wrapper.unmount(), localStorage.clear() })
 
   test('Description and solution slots do not exist', () => {
     expect(wrapper.find(descriptionSelector).text()).toBe('No description.')
@@ -245,10 +275,9 @@ describe('Load quiz submission from local storage', () => {
   }
   const key = 'quiz-6'
   const submission = ['A', 'B']
-  localStorage.setItem(key, JSON.stringify(submission))
   let wrapper = mount(Quiz, { props })
-  beforeEach(() => { wrapper = mount(Quiz, { props }) })
-  afterEach(() => { wrapper.unmount() })
+  beforeEach(() => { localStorage.setItem(key, JSON.stringify(submission)), wrapper = mount(Quiz, { props }) })
+  afterEach(() => { wrapper.unmount(), localStorage.clear() })
 
   test('Submission loaded from local storage', () => {
     expect(wrapper.find(submissionResultSelector).text()).toContain('Correct')
@@ -266,10 +295,9 @@ describe('Load quiz submission from local storage', () => {
   }
   const key = 'quiz-7'
   const submission = ['A', 'C']
-  localStorage.setItem(key, JSON.stringify(submission))
   let wrapper = mount(Quiz, { props })
-  beforeEach(() => { wrapper = mount(Quiz, { props }) })
-  afterEach(() => { wrapper.unmount() })
+  beforeEach(() => { localStorage.setItem(key, JSON.stringify(submission)), wrapper = mount(Quiz, { props }) })
+  afterEach(() => { wrapper.unmount(), localStorage.clear() })
 
   test('Submission loaded from local storage', () => {
     expect(wrapper.find(submissionResultSelector).text()).toContain('Incorrect')
