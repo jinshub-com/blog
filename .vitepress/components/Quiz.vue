@@ -90,8 +90,8 @@ const isSubmissionIncorrect = computed(() => {
 </script>
 
 <template>
-  <div class="custom-block quiz">
-    <div class="title">{{ title }}</div>
+  <div class="quiz-container custom-block quiz">
+    <div class="title">{{ title || '' }}</div>
     <div class="description">
       <slot name="description">No description.</slot>
     </div>
@@ -109,7 +109,7 @@ const isSubmissionIncorrect = computed(() => {
     <details>
       <summary class="solution-title">Show solution</summary>
       <p class="solution-content">
-        <slot name="solution">Empty.</slot>
+        <slot name="solution">No solution.</slot>
       </p>
     </details>
   </div>
