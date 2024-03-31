@@ -2,11 +2,11 @@
 
 Welcome to the Rust Book Quizzes. Here, you'll find quizzes to test your understanding and summaries to reinforce key concepts for each chapter of the official Rust book. Whether you're new to Rust or seeking deeper insight, this blog series is your guide through the chapters.
 
-## 1. Quizzes
+## How to Use the Quizzes?
 
-::: warning
-This section is under construction.
-:::
+Quizzes can be found throughout each chapter. After submitting, you'll see `✅ Correct answer` or `❗ Incorrect answer` displayed next to the "Submit" button to indicate whether your answers were entirely correct. Also, the correct options will be highlighted in green, and the selected incorrect options will be highlighted in red. Additionally, you can view the solution to each quiz by clicking the "Show solution" button.
+
+Here are some sample quizzes to get you familiar with the interface:
 
 <Quiz id="sample1" title="Sample Question 1: True or False" :options="['True','False']" :answers="['True']">
   <template #description>
@@ -57,14 +57,10 @@ This section is under construction.
   </template>
 </Quiz>
 
-## 2. Summaries
+## Do I Need to Create an Account?
 
-::: warning
-This section is under construction.
-:::
+No, submissions are stored in your browser's [local storage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage), so you can freely test your knowledge without any privacy concerns. However, please note that your submissions will be lost if you clear your browser's local storage.
 
-## 3. Acknowledgments
+## Acknowledgments
 
-::: warning
-This section is under construction.
-:::
+The Rust Book Quizzes, inspired by the [Experiment: Improving the Rust Book](https://rust-book.cs.brown.edu), provide interactive quizzes for the [official Rust book](https://doc.rust-lang.org/book/). The quizzes are created using [Vue.js](https://vuejs.org) and [VitePress](https://vitepress.dev) and are hosted on [GitHub Pages](https://pages.github.com).
