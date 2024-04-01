@@ -318,3 +318,25 @@ describe('Load incorrect quiz submission from local storage', () => {
     expect(wrapper.find(submissionResultSelector).text()).not.toContain('Correct')
   })
 })
+
+// should trigger custom quiz-submission event on submit
+describe('Trigger custom quiz-submission event on submit', () => {
+  const props = {
+    id: '8',
+    title: 'Test quiz',
+    options: ['A', 'B', 'C', 'D'],
+    answers: ['A', 'B'],
+  }
+  let wrapper = mount(Quiz, { props })
+  beforeEach(() => { wrapper = mount(Quiz, { props }) })
+  afterEach(() => { wrapper.unmount(), localStorage.clear() })
+
+  test('Custom quiz-submission event triggered on submit', async () => {
+    let eventFired = false;
+    window.addEventListener('quiz-submission', () => { eventFired = true; });
+    await wrapper.findAll(optionSelector)[0].setValue('A')
+    await wrapper.find(btnSubmitSelector).trigger('click')
+    await wrapper.vm.$nextTick()
+    expect(eventFired).toBeTruthy()
+  })
+})

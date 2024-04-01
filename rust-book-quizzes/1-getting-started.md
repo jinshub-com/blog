@@ -165,6 +165,10 @@ cargo build --release
 
 `cargo build --release` compiles the project with optimizations and stores the executable in the `target/release` directory.
 
+## Progress on this Page
+
+There are no quizzes for this chapter.
+
 ## References
 
 - Read this Chapter on the official Rust book: [Getting Started - The Rust Programming Language](https://doc.rust-lang.org/book/ch01-00-getting-started.html)

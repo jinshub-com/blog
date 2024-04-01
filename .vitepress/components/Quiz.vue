@@ -85,7 +85,10 @@ const handleSubmission = () => {
     return
   }
   isSubmitted.value = true
-  localStorage.setItem(props.id, `${isSubmissionCorrect.value ? 1 : 0}${JSON.stringify(selectedOptions.value)}`)
+  const id = props.id
+  const value = `${isSubmissionCorrect.value ? 1 : 0}${JSON.stringify(selectedOptions.value)}`
+  localStorage.setItem(id, value)
+  window.dispatchEvent(new CustomEvent('quiz-submission', { detail: { id } }))
 }
 
 // check if a selection is correct, a selection is correct if it is submitted

@@ -57,6 +57,18 @@ Here are some sample quizzes to get you familiar with the interface:
   </template>
 </Quiz>
 
+## Progress on this Page
+
+To help you track your progress, each chapter contains a "Progress on this Page" section that displays the submission status of the quizzes on that page.
+
+The progress of the entire Rust book quizzes can be viewed on the [Progress](/rust-book-quizzes/progress) page.
+
+<QuizProgress
+  :ids="['quiz-sample1','quiz-sample2','quiz-sample3']"
+  :titles="['Sample Question 1: True or False','Sample Question 2: Multiple Choice','Sample Question 3: Multiple Choice with Multiple Answers']"
+  :relativePaths="['introduction']"
+  />
+
 ## Do I Need to Create an Account?
 
 No, submissions are stored in your browser's [local storage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage), so you can freely test your knowledge without any privacy concerns. However, please note that your submissions will be lost if you clear your browser's local storage.
