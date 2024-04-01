@@ -8,7 +8,7 @@ Quizzes can be found throughout each chapter. After submitting, you'll see `✅ 
 
 Here are some sample quizzes to get you familiar with the interface:
 
-<Quiz id="sample1" title="Sample Question 1: True or False" :options="['True','False']" :answers="['True']">
+<Quiz id="quiz-sample1" title="Sample Question 1: True or False" :options="['True','False']" :answers="['True']">
   <template #description>
 
   True or False: The Rust programming language is designed for **performance** and **safety**.
@@ -19,7 +19,7 @@ Here are some sample quizzes to get you familiar with the interface:
   </template>
 </Quiz>
 
-<Quiz id="sample2" title="Sample Question 2: Multiple Choice" :options="['1','2','3','Does not compile']" :answers="['2']">
+<Quiz id="quiz-sample2" title="Sample Question 2: Multiple Choice" :options="['1','2','3','Does not compile']" :answers="['2']">
 	<template #description>
 
   What is the output of the following code snippet?
@@ -38,7 +38,7 @@ Here are some sample quizzes to get you familiar with the interface:
   </template>
 </Quiz>
 
-<Quiz id="sample3" title="Sample Question 3: Multiple Choice with Multiple Answers" :options="[
+<Quiz id="quiz-sample3" title="Sample Question 3: Multiple Choice with Multiple Answers" :options="[
   'Rust is a statically typed language.',
   'Rust is a dynamically typed language.',
   'Rust is a compiled language.',

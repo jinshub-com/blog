@@ -2,8 +2,6 @@ import { mount } from '@vue/test-utils'
 import { describe, test, expect, beforeEach, afterEach } from 'vitest'
 import Quiz from './Quiz.vue'
 
-// .quiz-container
-const quizContainerSelector = '[class=quiz-container]'
 // .quiz-container > .title
 const titleSelector = '[class=title]'
 // .quiz-container > .description
@@ -245,6 +243,14 @@ describe('Quiz with description and solution', () => {
     expect(wrapper.find(descriptionSelector).text()).toBe(description)
     expect(wrapper.find(solutionContentSelector).text()).toBe(solution)
   })
+
+  test('Quiz id is set', () => {
+    expect(wrapper.attributes('id')).toBe(props.id)
+  })
+
+  test('Quiz title is set', () => {
+    expect(wrapper.find(titleSelector).text()).toBe(props.title)
+  })
 })
 
 // without description and solution slots
@@ -263,17 +269,25 @@ describe('Quiz without description and solution', () => {
     expect(wrapper.find(descriptionSelector).text()).toBe('No description.')
     expect(wrapper.find(solutionContentSelector).text()).toBe('No solution.')
   })
+
+  test('Quiz id is set', () => {
+    expect(wrapper.attributes('id')).toBe(props.id)
+  })
+
+  test('Quiz title is set', () => {
+    expect(wrapper.find(titleSelector).text()).toBe(props.title)
+  })
 })
 
 // load correct quiz submission from local storage
-describe('Load quiz submission from local storage', () => {
+describe('Load correct quiz submission from local storage', () => {
   const props = {
     id: '6',
     title: 'Test quiz',
     options: ['A', 'B', 'C', 'D'],
     answers: ['A', 'B'],
   }
-  const key = 'quiz-6'
+  const key = '6'
   const submission = ['A', 'B']
   let wrapper = mount(Quiz, { props })
   beforeEach(() => { localStorage.setItem(key, JSON.stringify(submission)), wrapper = mount(Quiz, { props }) })
@@ -286,14 +300,14 @@ describe('Load quiz submission from local storage', () => {
 })
 
 // load incorrect quiz submission from local storage
-describe('Load quiz submission from local storage', () => {
+describe('Load incorrect quiz submission from local storage', () => {
   const props = {
     id: '7',
     title: 'Test quiz',
     options: ['A', 'B', 'C', 'D'],
     answers: ['A', 'B'],
   }
-  const key = 'quiz-7'
+  const key = '7'
   const submission = ['A', 'C']
   let wrapper = mount(Quiz, { props })
   beforeEach(() => { localStorage.setItem(key, JSON.stringify(submission)), wrapper = mount(Quiz, { props }) })

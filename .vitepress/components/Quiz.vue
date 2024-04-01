@@ -3,7 +3,7 @@
 Documentation:
 
 Props:
-- id: string, the id of the quiz, used to store the selected options in localStorage
+- id: string, the id of the quiz, used to store the selected options in localStorage and to distinguish different quizzes
 - title: string, the title of the quiz, displayed at the top
 - options: string[], the options of the quiz, displayed as the choices
 - answers: string[], the answers of the quiz, used to check if the submission is correct
@@ -34,11 +34,10 @@ interface Props {
 }
 const props = defineProps<Props>()
 
-const localStorageId = `quiz-${props.id}`
 const selectedOptions = ref<string[]>([])
 // load selectedOptions from localStorage by id and handle JSON parse error
 try {
-  let selectedOptionsFromLocalStorage = localStorage.getItem(localStorageId)
+  let selectedOptionsFromLocalStorage = localStorage.getItem(props.id)
   if (selectedOptionsFromLocalStorage) {
     // the first character is used to store the submission status
     if (['0', '1'].includes(selectedOptionsFromLocalStorage[0])) {
@@ -54,7 +53,6 @@ try {
 }
 // watch selectedOptions and set isSubmitted to false
 watch(selectedOptions, () => {
-  console.log('selectedOptions changed', JSON.stringify(selectedOptions.value))
   isSubmitted.value = false
 })
 
@@ -87,7 +85,7 @@ const handleSubmission = () => {
     return
   }
   isSubmitted.value = true
-  localStorage.setItem(localStorageId, `${isSubmissionCorrect.value ? 1 : 0}${JSON.stringify(selectedOptions.value)}`)
+  localStorage.setItem(props.id, `${isSubmissionCorrect.value ? 1 : 0}${JSON.stringify(selectedOptions.value)}`)
 }
 
 // check if a selection is correct, a selection is correct if it is submitted
@@ -115,7 +113,7 @@ const isSubmissionIncorrect = computed(() => {
 </script>
 
 <template>
-  <div class="quiz-container custom-block quiz">
+  <div :id="id" class="custom-block quiz">
     <div class="title">{{ title || '' }}</div>
     <div class="description">
       <slot name="description">No description.</slot>
