@@ -13,3 +13,7 @@ This page tracks the progress of the [quizzes](/rust-book-quizzes/introduction) 
 ## Chapter 1: Getting Started
 
 There are no quizzes for this chapter.
+
+## Chapter 2: Programming a Guessing Game
+
+There are no quizzes for this chapter.

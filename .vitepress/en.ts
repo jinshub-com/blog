@@ -20,6 +20,7 @@ export const en = defineConfig({
             items: [
               { text: 'Introduction', link: 'introduction' },
               { text: 'Getting Started', link: '1-getting-started' },
+              { text: 'Programming a Guessing Game', link: '2-programming-a-guessing-game' },
               { text: 'Progress', link: 'progress' },
             ]
           },
