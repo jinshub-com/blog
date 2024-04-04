@@ -53,7 +53,7 @@ Constants are declared using the `const` keyword. Constants are always immutable
 const MAX_POINTS: u32 = 100_000;
 ```
 
-## Concept Check Quiz
+## Concept Check Quiz 1
 
 <Quiz id="quiz-variables-and-mutability-1" title="Concept Check 3.1: Shadowing variables" :options="[
 	'0123',
@@ -259,7 +259,7 @@ match fourth {
 }
 ```
 
-## Concept Check Quiz
+## Concept Check Quiz 2
 
 <Quiz id="quiz-data-types-1" title="Concept Check 3.4: Data Types" :options="[
 	'True',
@@ -347,7 +347,7 @@ let y = { // block expression
 println!("{}", y); // 3
 ```
 
-## Concept Check Quiz
+## Concept Check Quiz 3
 
 <Quiz id="quiz-functions-1" title="Concept Check 3.7: Functions" :options="[
 	'1',
@@ -503,7 +503,7 @@ for i in 0..array.len() {
 }
 ```
 
-## Concept Check Quiz
+## Concept Check Quiz 4
 
 <Quiz id="quiz-control-flow-1" title="Concept Check 3.8: if Expressions" :options="[
 	'0',
