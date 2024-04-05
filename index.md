@@ -9,5 +9,8 @@ hero:
     - theme: brand
       text: Rust Book Quizzes
       link: /rust-book-quizzes/introduction
+    - theme: brand
+      text: ELK Stack
+      link: /elk/index
 ---
 
