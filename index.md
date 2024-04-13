@@ -12,5 +12,8 @@ hero:
     - theme: brand
       text: ELK Stack
       link: /elk/index
+    - theme: brand
+      text: K8s
+      link: /k8s/index
 ---
 
