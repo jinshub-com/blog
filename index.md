@@ -15,5 +15,8 @@ hero:
     - theme: brand
       text: K8s
       link: /k8s/index
+    - theme: brand
+      text: Full-Stack Development
+      link: /full-stack/index
 ---
 
