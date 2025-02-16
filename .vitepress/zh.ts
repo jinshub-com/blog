@@ -30,5 +30,19 @@ export const zh = defineConfig({
     //     ]
     //   },
     // },
+    sidebar: {
+      '/zh/web-dev-guide/': {
+        base: '/zh/web-dev-guide/', items: [
+          { text: 'Hello Web', link: '1-hello-web' },
+          {
+            text: '前端开发',
+            collapsed: false,
+            items: [
+              { text: 'HTML & CSS', link: '2-frontend-fundamentals-html-css' },
+            ]
+          },
+        ]
+      },
+    },
   },
 })
