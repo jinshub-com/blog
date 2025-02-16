@@ -1,7 +1,7 @@
 # 第一课：Hello Web（你好，万维网）
 
 :::info 教程说明
-本课程主要针对 **macOS 系统**设计，Windows 用户理论上也可运行，但部分软件安装和操作可能不同，本课不专门覆盖。  
+本课程主要针对 **macOS 系统**设计，Windows 用户理论上也可运行，但部分软件安装和操作可能不同。  
 :::
 
 ## 课程目标
@@ -76,7 +76,7 @@ cat ~/.ssh/id_ed25519.pub
 
 使用擅长编程的大模型可以快速生成代码，提高开发效率。例如 [Deepseek R1](https://chat.deepseek.com/)、 [Claude Sonnet 3.5](https://claude.ai/)、[ChatGPT o1/o3](https://chat.openai.com/)。
 :::tip 提示
-大模型编程能力进化迅速，最擅长编程的模型会不断变化。可以在 [Aider LLM Leaderboards](https://aider.chat/docs/leaderboards/) 查看最新排名。
+大模型编程能力进化迅速，擅长编程的模型在不断变化。可以在 [Aider LLM Leaderboards](https://aider.chat/docs/leaderboards/) 查看最新排名。
 :::
 
 ## 四、实战作业
@@ -112,10 +112,8 @@ cat ~/.ssh/id_ed25519.pub
 mkdir hello-web
 # 创建 index.html 文件
 touch hello-web/index.html
-# 在 VS Code 中打开文件夹
-code hello-web
 ```
-2. 在 VS Code 中打开 `index.html` 文件并粘贴生成的代码，按 `⌘ + S` 保存
+2. 在 VS Code 中打开文件夹 hello-web，打开 `index.html` 文件并粘贴生成的代码，按 `⌘ + S` 保存
 3. 保存文件后通过浏览器打开预览
 ```bash
 # 在浏览器中打开文件
@@ -144,7 +142,7 @@ git commit -m "First commit"
 git remote add origin git@github.com:zhangsan/hello-web.git
 git push -u origin main
 ```
-4. 在 hello-web 仓库 Settings -> Pages 开启部署：
+4. 在 GitHub 里找到 hello-web 仓库，点击 Settings -> Pages 开启部署：
    1. Source 选择 "Deploy from a branch"
    2. Branch 选择 main 分支，选择 `/ (root)` 目录
    3. 点击 Save
@@ -153,11 +151,13 @@ git push -u origin main
 ## 五、课后练习
 1. 用 LLM 生成一个包含链接的网页，并部署到 GitHub Pages
 2. 简单介绍浏览器和服务器的作用，前端和后端的区别
+3. 你的电脑可以同时作为客户端和服务端吗？为什么？
 
 <details>
 <summary>参考答案</summary>
 <ol>
 <li>参考章节 “四、实战作业”</li>
 <li>浏览器负责渲染网页，显示给用户；服务器存储网站数据，提供给用户访问；前端开发用户界面和交互，后端开发服务端逻辑。</li>
+<li>可以，通过安装 Web 服务器软件如 Apache、Nginx，将电脑变成服务器，提供网页服务。</li>
 </ol>
 </details>
