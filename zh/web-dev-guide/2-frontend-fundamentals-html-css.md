@@ -280,19 +280,23 @@ CSS 属性非常多，全部记住并不现实，可以在需要时查阅文档�
 ## 三、实战作业：模仿 GitHub 仓库页面
 
 ### 3.1 要求
-1. 实现包含以下元素的页面：
-   - **顶部导航栏**：包含 "Code"、"Issues" 等标签（Tab）
-   - **文件列表**：至少两个可点击文件（可用 `<a>` 标签）
-   - **About 卡片**：右侧固定宽度信息卡片
-   - **搜索框**：顶部 "Go to file" 搜索框
-   - **Code 按钮**：绿色按钮（可用 `<button>`）
+1. 选择一个 GitHub 开源项目仓库，如 [You-need-to-know-css](https://github.com/l-hammer/You-need-to-know-css)，模仿实现该仓库的页面布局，由于元素较多，只实现部分内容即可：
+   - **顶部导航栏**：至少包含 "Code"、"Issues" 两个标签（Tab）
+   - **文件列表上方工具区**：至少实现以下元素：
+     - **"Go to file" 搜索框**
+     - **"Code" 下载按钮**
+   - **文件列表**：至少包含一个文件夹和一个文件
+   - **文件列表右侧 About 区域**：显示一小段项目简介，一个链接，几个标签即可
 
-2. **样式细节**：
-   - 标签页鼠标悬停（Hover）背景色变化，显示小手掌光标
-   - 屏幕宽度小于 768px 时隐藏 About 卡片
+2. **样式细节要求**：
+   - 注意很多元素鼠标悬停（Hover）时背景色会有细微变化（用于给用户实时反馈），并且显示小手掌光标，如 标签、按钮、文件等
    - 颜色、字体、间距等样式尽量模仿 GitHub 页面。不需要完全一致，但要求尽量接近
+   - 屏幕宽度小于 768px 时隐藏 About 区域即可（GitHub 会在小屏幕时把 About 区域放在文件列表上方，但是我们不用实现这个功能）
 
-3. **只需要实现静态页面**，不需要实现交互功能，如点击标签页切换内容等。
+3. **只需要实现静态页面**
+   - 不需要实现交互功能，如点击标签页切换内容、点击 Code 按钮显示下拉框等（学完 JavaScript 之后就会实现了）
+   - 不需要真实内容，可以使用假数据代替，如文件名、文件夹名等，看起来像真实数据即可
+   - 图标不用完全一致，可以使用 [Font Awesome](https://fontawesome.com/v6/icons) 提供的免费图标库
 
 ### 3.2 实现提示
 
@@ -303,7 +307,9 @@ CSS 属性非常多，全部记住并不现实，可以在需要时查阅文档�
   - 选中元素后，右侧会显示元素的 CSS 样式和盒模型，颜色、字体等属性
   - 可以在样式中修改属性值，实时预览效果
 
-#### 导航栏（使用 Flex）
+#### 导航栏
+
+使用 Flex 布局可以轻松实现水平布局，如导航栏：
 ```html
 <nav class="tabnav">
   <a href="#" class="tabnav-tab">Code</a>
@@ -340,21 +346,47 @@ CSS 属性非常多，全部记住并不现实，可以在需要时查阅文档�
 ```
 
 #### 文件列表（列表布局）
+
+列表通常会使用 `<ul>` 和 `<li>` 标签（为了更好的语义化），如：
 ```html
-<div class="file-list">
-  <a href="#" class="file-item">
-    <i class="fa-regular fa-file"></i>
-    README.md
-  </a>
-</div>
+<ul class="file-list">
+  <li href="#" class="file-item">
+    <div>
+        <i class="fa-regular fa-file"></i>
+        README.md
+    </div>
+    <div>update license</div>
+    <div>6 years ago</div>
+  </li>
+</ul>
+```
+但 ul 和 li 默认有一些内边距和外边距，并且有默认的列表样式，可以通过 CSS 去除：
+```css
+.file-list {
+  list-style-type: none; /* 去除默认列表样式 */
+  padding: 0; /* 去除内边距，或者设置为需要的值 */
+}
 ```
 
 #### 响应式布局（Media Query）
 ```css
 @media (max-width: 768px) {
-  .about-card {
-    display: none; /* 小屏幕隐藏右侧卡片 */
+  .about-section {
+    display: none; /* 小屏幕隐藏右侧 About 区域 */
   }
+}
+```
+
+#### 圆角按钮（Button）
+```html
+<button class="btn">Code</button>
+```
+```css
+.btn {
+  padding: 8px 16px;
+  border: 1px solid #d1d5da;
+  border-radius: 6px; /* 设置圆角大小 */
+  background-color: #f6f8fa;
 }
 ```
 
@@ -362,9 +394,9 @@ CSS 属性非常多，全部记住并不现实，可以在需要时查阅文档�
 
 - 还原 GitHub 的暗色主题（Dark Mode）
 
-#### 提示
-1. 使用 CSS 变量定义颜色变量
-2. 使用 `@media (prefers-color-scheme: dark) { ... }` 检测系统主题
+### 3.4 实现提示
+1. 使用 CSS 变量定义两套颜色主题，包括背景色、文本颜色等
+2. 默认使用浅色主题，使用 `@media (prefers-color-scheme: dark) { ... }` 检测系统主题为 dark 时，使用暗色主题
 
 [更多关于 Dark Mode 的实现](https://developer.mozilla.org/zh-CN/docs/Web/CSS/@media/prefers-color-scheme)
 
