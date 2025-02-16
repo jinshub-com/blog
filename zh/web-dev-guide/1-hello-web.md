@@ -89,6 +89,21 @@ cat ~/.ssh/id_ed25519.pub
 - 一个段落「这是一个简单的网页」
 - 一个按钮「点击我」，点击后弹出提示框「你好，世界！」
 ```
+示例代码：
+```html
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>我的第一个网页</title>
+</head>
+<body>
+    <h1>我的第一个网页</h1>
+    <p>这是一个简单的网页</p>
+    <button onclick="alert('你好，世界！')">点击我</button>
+</body>
+</html>
+```
 
 ### 项目创建流程
 1. 新建项目 `hello-web`
@@ -136,6 +151,13 @@ git push -u origin main
    4. 等待几分钟，访问 `https://用户名.github.io/仓库名` 查看部署结果
 
 ## 五、课后练习
-1. 用 LLM 生成一个包含链接的网页
-2. 部署到 GitHub Pages
-3. 简单介绍浏览器和服务器的作用，前端和后端的区别
+1. 用 LLM 生成一个包含链接的网页，并部署到 GitHub Pages
+2. 简单介绍浏览器和服务器的作用，前端和后端的区别
+
+<details>
+<summary>参考答案</summary>
+<ol>
+<li>参考章节 “四、实战作业”</li>
+<li>浏览器负责渲染网页，显示给用户；服务器存储网站数据，提供给用户访问；前端开发用户界面和交互，后端开发服务端逻辑。</li>
+</ol>
+</details>
