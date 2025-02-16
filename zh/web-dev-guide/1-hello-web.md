@@ -146,12 +146,21 @@ git push -u origin main
    1. Source 选择 "Deploy from a branch"
    2. Branch 选择 main 分支，选择 `/ (root)` 目录
    3. 点击 Save
-   4. 等待几分钟，访问 `https://用户名.github.io/仓库名` 查看部署结果
+   4. 等待几分钟，访问 `https://用户名.github.io/仓库名` 查看部署结果，假设你的用户名是 zhangsan，访问地址是 `https://zhangsan.github.io/hello-web`
+
+:::tip 什么是 URL？
+URL 是统一资源定位符（Uniform Resource Locator）的缩写，是互联网上资源的地址。URL 由多个部分组成，例如 `https://zhangsan.github.io/hello-web`：
+- `https://`：网页协议，表示这是一个加密的 HTTP 请求
+- `zhangsan.github.io`：域名，指向 GitHub Pages 服务器
+- `hello-web`：路径，指向 zhangsan 用户下的 hello-web 仓库
+- `index.html`：文件名，省略时默认访问 index.html 文件
+:::
 
 ## 五、课后练习
 1. 用 LLM 生成一个包含链接的网页，并部署到 GitHub Pages
 2. 简单介绍浏览器和服务器的作用，前端和后端的区别
 3. 你的电脑可以同时作为客户端和服务端吗？为什么？
+4. HTML 文件名为什么通常是 `index.html`？可不可以改成其它名字？
 
 <details>
 <summary>参考答案</summary>
@@ -159,5 +168,6 @@ git push -u origin main
 <li>参考章节 “四、实战作业”</li>
 <li>浏览器负责渲染网页，显示给用户；服务器存储网站数据，提供给用户访问；前端开发用户界面和交互，后端开发服务端逻辑。</li>
 <li>可以，通过安装 Web 服务器软件如 Apache、Nginx，将电脑变成服务器，提供网页服务。</li>
+<li>可以，但默认访问文件名是 `index.html`，如果改成其它名字，需要在 URL 中指定文件名。</li>
 </ol>
 </details>
