@@ -12,7 +12,7 @@
 
 ## 一、网页应用组成
 
-### 核心组件
+### 1.1 核心组件
 ```d2
 direction: right
 用户 -> 浏览器: 输入网址
@@ -42,7 +42,7 @@ direction: right
 
 ## 三、开发工具配置
 
-### 基础工具
+### 3.1 基础工具
 1. **VS Code**：代码编辑器。[去官网下载](https://code.visualstudio.com/)
 2. **终端（Terminal）**：通过命令行运行程序的工具。macOS 自带，按 `⌘ + 空格` 搜索使用
 3. **Git**：代码版本控制工具。macOS 自带，使用终端运行 `git` 命令
@@ -55,7 +55,7 @@ git config --global user.email "你的邮箱"
 ```
 4. **GitHub 账号**：代码托管平台，也提供网页托管服务（Web hosting service）[GitHub Pages](https://pages.github.com/)。[去注册账号](https://github.com/)
 
-### SSH 密钥配置
+### 3.2 SSH 密钥配置
 SSH（Secure Shell）是一种加密协议，用于安全连接远程服务器。配置 SSH 密钥后，可以免密码连接 GitHub 上传或下载代码。
 ```bash
 # 生成密钥对（公钥+私钥），一路回车即可
@@ -72,7 +72,7 @@ cat ~/.ssh/id_ed25519.pub
 私钥文件 `~/.ssh/id_ed25519` 相当于你的密码，不要泄露给他人。
 :::
 
-### AI 大模型（LLM）辅助编程
+### 3.3 AI 大模型（LLM）辅助编程
 
 使用擅长编程的大模型可以快速生成代码，提高开发效率。例如 [Deepseek R1](https://chat.deepseek.com/)、 [Claude Sonnet 3.5](https://claude.ai/)、[ChatGPT o1/o3](https://chat.openai.com/)。
 :::tip 提示
@@ -81,7 +81,7 @@ cat ~/.ssh/id_ed25519.pub
 
 ## 四、实战作业
 
-### 用 LLM 生成 HTML
+### 4.1 用 LLM 生成 HTML
 示例提示词：
 ```
 生成一个包含以下元素的 HTML 文件：
@@ -105,7 +105,7 @@ cat ~/.ssh/id_ed25519.pub
 </html>
 ```
 
-### 项目创建流程
+### 4.2 项目创建流程
 1. 新建项目 `hello-web`
 ```bash
 # 在终端中运行以下命令，创建文件夹
@@ -124,7 +124,7 @@ open hello-web/index.html
 通过 `open hello-web/index.html` 命令在浏览器中打开的网页完整地址是 `file://文件夹地址/index.html` ，`file://` 开头表示这个网页是本地文件，其它人的电脑/手机无法访问，我们需要把代码部署到服务器上才能分享给他人。
 :::
 
-### 部署到 GitHub Pages
+### 4.3 部署到 GitHub Pages
 
 GitHub Pages 是 GitHub 提供的免费静态网页托管服务（免费的服务器），我们可以把网页文件上传到 GitHub 仓库，通过 `https://用户名.github.io/仓库名` 访问网页。
 
@@ -132,14 +132,18 @@ GitHub Pages 是 GitHub 提供的免费静态网页托管服务（免费的服�
 2. Repository name 填写 `hello-web`，点击 `Create repository`
 3. 连接本地项目与 GitHub 仓库
 ```bash
-# 初始化 Git 仓库
+# 进入项目文件夹
 cd hello-web
+# 初始化本地 Git 仓库
 git init
+# 添加所有文件到本地 Git 仓库（准备记录版本）
 git add .
+# 提交添加的文件到本地 Git 仓库（确定记录版本）
 git commit -m "First commit"
 
-# 关联 GitHub 仓库，假设你的 GitHub 用户名是 zhangsan，仓库名是 hello-web
+# 关联远程 GitHub 仓库，假设你的 GitHub 用户名是 zhangsan，仓库名是 hello-web
 git remote add origin git@github.com:zhangsan/hello-web.git
+# 上传本地仓库代码到远程 GitHub 仓库
 git push -u origin main
 ```
 4. 在 GitHub 里找到 hello-web 仓库，点击 Settings -> Pages 开启部署：

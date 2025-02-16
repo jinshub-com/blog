@@ -11,7 +11,7 @@
 ### 1.1 什么是 HTML？
 - **超文本标记语言**（HyperText Markup Language）
 - 定义网页**内容结构**（文字、图片、链接）
-- 通过标签（Tags）描述内容（`<tag>内容</tag>`）
+- 通过**标签**（Tag）描述内容，有时也会称为**元素**（Element），如 `<h1>我是标题</h1>`，中的 `h1` 就是标签/元素，意思是标题（Heading 1）
 
 下面是一个简单的 HTML 文档结构：
 ```html
@@ -22,7 +22,7 @@
   <title>我的第一个网页</title> <!-- 网页标题 -->
 </head>
 <body> <!-- 文档主体 -->
-  <h1>我的第一个网页</h1> <!-- 标题 -->
+  <h1>我的第一个网页</h1> <!-- 标题（Heading 1） -->
   <p>这是一个简单的网页</p> <!-- 段落（paragraph） -->
 </body>
 </html>
@@ -31,26 +31,12 @@
 HTML 的语法特点：
 - 标签通常成对出现，有开始和结束标签，如 `<h1>...</h1>`
 - 没有结束标签的标签称为**空元素**（Self-Closing Tag），如 `<meta charset="UTF-8">`
-- 标签可以包含属性（Attributes），如 `lang="zh-CN"` 是 `<html>` 标签的属性
+- 标签可以包含属性（Attributes），用来提供更多信息，通常是键值对（key-value pair），如 `lang="zh-CN"` 表示这个网页的语言是中文
 - 标签可以嵌套，形成树状结构
 - 标签不区分大小写，但推荐使用小写
 - 注释使用 `<!-- 注释内容 -->`
 
-### 1.2 为什么需要语义化？
-
-语义化（Semantic）指的是使用合适的标签描述内容。
-
-```html
-<!-- 非语义化 div（division 区块） -->
-<div class="header">我是标题</div>
-
-<!-- 语义化 -->
-<header>我是标题</header>
-```
-- 提升**可访问性**（Accessibility）：屏幕阅读器更好识别
-- 利于**SEO**（Search Engine Optimization）：搜索引擎理解内容结构
-
-### 1.3 常用 HTML 标签
+### 1.2 常用 HTML 标签
 | 类型         | 标签示例                     | 说明                   |
 |--------------|------------------------------|------------------------|
 | 基础结构     | `<html>`, `<head>`, `<body>` | 网页容器               |
@@ -63,14 +49,60 @@ HTML 的语法特点：
 
 [更多 HTML 标签](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element)
 
+:::tip 提示
+- 不知道该用什么标签时，可以先用 `<div>`，也可以问 LLM，如：`我要展示一张图片，用什么 HTML 标签和属性？`
+- `<div>` 可能是最常用的容器标签，通常用于布局（包裹一组元素添加样式）。
+- `<input>` 在创建表单（Form）时很常用，如输入框、单选框、复选框等。通过 [`type`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/input#input_%E7%B1%BB%E5%9E%8B) 属性指定类型。
+:::
+
+### 1.3 常用 HTML 属性
+
+HTML 标签可以包含属性（Attributes），用来提供更多信息或控制元素行为
+- 大部分属性是以键值对（key-value pair）的形式出现，如 `class="content"`
+- 也有一些属性是布尔属性（Boolean Attributes），只需要写属性名即可，如 `disabled`，表示元素已经被禁用
+
+| 属性         | 示例                     | 说明                     |
+|--------------|--------------------------|------------------------|
+| `class`      | `<p class="content">`    | 元素类名                |
+| `id`         | `<div id="main">`        | 元素唯一标识符           |
+| `href`       | `<a href="https://example.com">` | 链接地址        |
+| `src`        | `<img src="image.jpg">`  | 图片/媒体资源地址         |
+| `style`      | `<h1 style="color: red;">` | 内联样式（inline style）|
+| `disabled`   | `<button disabled>`      | 禁用按钮                 |
+
+[更多 HTML 属性](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Attributes)
+
+:::tip 提示
+`class` 可能是最常用的属性，通常用于为元素添加样式或 JavaScript 操作。
+- 同一个类名可以应用到多个元素，如 `<ul><li class="file">...</li><li class="file">...</li></ul>`  
+- 一个元素也可以应用多个类名，用空格分隔，如 `<button class="btn primary">...</button>`  
+:::
+
+### 1.4 HTML 语义化
+
+语义化（Semantic）指的是使用合适的标签描述内容。
+
+```html
+<!-- 非语义化 div（division 区块） -->
+<div class="header">我是标题</div>
+
+<!-- 语义化 -->
+<header>我是标题</header>
+```
+
+为什么要使用语义化标签？
+- 提升[可访问性](https://developer.mozilla.org/zh-CN/docs/Web/Accessibility)（Accessibility）：屏幕阅读器更好识别
+- 利于[SEO](https://developer.mozilla.org/zh-CN/docs/Glossary/SEO)（Search Engine Optimization）：搜索引擎更好理解网页内容
+
+[更多 HTML 语义化标签](https://developer.mozilla.org/zh-CN/docs/Glossary/Semantics)
+
 ## 二、CSS：网页的皮肤
 
 ### 2.1 什么是 CSS？
 - **层叠样式表**（Cascading Style Sheets）
 - 控制网页的**视觉表现**（颜色、布局、动画）
-- 通过选择器（Selectors）定位元素
 
-下面是一个简单的 HTML + CSS 示例：
+下面是一个简单的 HTML + CSS 示例，展示了通过 `<style>` 标签添加 CSS 样式到 HTML 中：
 ```html
 <!DOCTYPE html>
 <html lang="zh-CN">
@@ -89,6 +121,11 @@ HTML 的语法特点：
 </body>
 </html>
 ```
+
+CSS 的语法特点：
+- 通过选择器（Selectors）定位元素，再通过属性（Properties）设置样式，如 `h1 { color: red; }` 表示选择所有 `<h1>` 元素并设置颜色为红色
+  - 样式由**属性**（Property）和**值**（Value）组成，如 `color: red;`
+  - 多个样式之间用分号 `;` 分隔，如 `h1 { color: red; font-size: 24px; }`
 
 ### 2.2 CSS 核心概念
 
@@ -152,42 +189,6 @@ h1 { color: red; }
 
 [更多关于盒模型的解释](https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Building_blocks/The_box_model)
 
-#### 单位系统
-- `px`：绝对像素
-- `rem`：根元素（`<html>`）字体大小的倍数（推荐），根元素默认字体大小是 16px，所以默认 1rem = 16px
-- `vw/vh`：视窗宽高的百分比
-
-[更多关于 CSS 单位的解释](https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Building_blocks/Values_and_units)
-
-#### 颜色
-
-颜色可以使用关键字（`red`、`blue`）、十六进制（`#ff0000`）、RGB（`rgb(255, 0, 0)`）等表示。
-
-```css
-/* 以下三种写法效果相同： */
-h1 { color: red; }
-h1 { color: #ff0000; }
-h1 { color: rgb(255, 0, 0); }
-```
-
-透明度可以使用 `rgba(255, 0, 0, 0.5)` 表示，最后一个参数是透明度（0-1）。
-
-[更多关于 CSS 颜色的解释](https://developer.mozilla.org/zh-CN/docs/Web/CSS/color_value)
-
-### 2.3 响应式设计（Responsive Design）
-
-#### 媒体查询（Media Query）
-
-媒体查询用于根据设备特性（屏幕宽度、高度、方向、暗黑模式等）应用不同的样式。
-```css
-/* 当屏幕宽度小于 768px 时生效 */
-@media (max-width: 768px) {
-  .container { padding: 10px; }
-}
-```
-
-[更多关于 Media Query 的解释](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Media_Queries/Using_media_queries)
-
 #### Flex 弹性布局
 
 Flex 布局是一种弹性布局模型，可以轻松实现元素的水平、垂直对齐。
@@ -217,7 +218,64 @@ CSS 变量用于定义和使用可重复的值，如颜色、字体大小等。
 }
 ```
 
-[📚 MDN CSS 参考文档](https://developer.mozilla.org/zh-CN/docs/Web/CSS)
+#### 单位系统
+- `px`：绝对像素
+- `rem`：根元素（`<html>`）字体大小的倍数（推荐），根元素默认字体大小是 16px，所以默认 1rem = 16px
+- `vw/vh`：视窗宽高的百分比
+
+[更多关于 CSS 单位的解释](https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Building_blocks/Values_and_units)
+
+#### 颜色
+
+颜色可以使用关键字（`red`、`blue`）、十六进制（`#ff0000`）、RGB（`rgb(255, 0, 0)`）等表示。
+
+```css
+/* 以下三种写法效果相同： */
+h1 { color: red; }
+h1 { color: #ff0000; }
+h1 { color: rgb(255, 0, 0); }
+```
+
+透明度可以使用 `rgba(255, 0, 0, 0.5)` 表示，最后一个参数是透明度（0-1）。
+
+[更多关于 CSS 颜色的解释](https://developer.mozilla.org/zh-CN/docs/Web/CSS/color_value)
+
+### 2.3 响应式设计（Responsive Design）
+
+响应式设计是一种设计理念，旨在使网页在不同设备上（手机、平板、电脑）有良好的显示效果。
+
+#### 媒体查询（Media Query）
+
+媒体查询用于根据设备特性（屏幕宽度、高度、方向、暗黑模式等）应用不同的样式。
+```css
+/* 当屏幕宽度小于 768px 时生效 */
+@media (max-width: 768px) {
+  .container { padding: 10px; }
+}
+```
+
+[更多关于 Media Query 的解释](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Media_Queries/Using_media_queries)
+
+### 2.4 常用 CSS 属性
+
+| 属性         | 示例                     | 说明                     |
+|--------------|--------------------------|------------------------|
+| `color`      | `color: #ffffff;`            | 文本颜色                 |
+| `font-size`  | `font-size: 24px;`       | 字体大小                 |
+| `font-family`| `font-family: Arial;`    | 字体                     |
+| `background-color` | `background-color: lightblue;` | 背景颜色      |
+| `padding`    | `padding: 10px;`         | 内边距                   |
+| `margin`     | `margin: 20px;`          | 外边距                   |
+| `border`     | `border: 1px solid #ccc;`| 边框                     |
+| `display`    | `display: flex;`         | 使用弹性布局              |
+| ^            | `display: none;`         | 隐藏元素                 |
+
+
+[MDN CSS 参考文档](https://developer.mozilla.org/zh-CN/docs/Web/CSS)
+
+:::tip 提示
+CSS 属性非常多，全部记住并不现实，可以在需要时查阅文档，或者直接问 LLM，如 `我想让一组按钮（class="my-button"）水平排列，按钮之间有 20px 间距，水平方向向左对齐，垂直方向居中对齐，屏幕空间不够时自动换行，怎么写 CSS？`
+:::
 
 ## 三、实战作业：模仿 GitHub 仓库页面
 
@@ -235,7 +293,7 @@ CSS 变量用于定义和使用可重复的值，如颜色、字体大小等。
    - About 卡片使用边框（border）和阴影（box-shadow）
    - 屏幕宽度小于 768px 时隐藏 About 卡片
 
-3. **只需要实现静态页面**，不需要实现交互功能，如点击标签页切换内容等。
+3. **只需要实现静态页面**，不需要实现交互功能，如点击标签页切换内容等。颜色大小等不需要完全一致，只需模仿即可。
 
 ### 3.2 实现提示
 
@@ -314,15 +372,15 @@ CSS 变量用于定义和使用可重复的值，如颜色、字体大小等。
 ## 四、课后练习
 1. CSS 选择器 `.nav > li` 和 `.nav li` 有什么区别？
 2. 如何实现元素水平垂直居中？
-3. 假设有 CSS 代码 `h1 { font-size: 2rem; }`，`h1` 的字体大小是多少`px`？
+3. 假设有 CSS 代码 `body { font-size: 20px; }; h1 { font-size: 2rem; }`，`h1` 的字体大小是多少`px`？
 4. 假设有 CSS 代码 `html { font-size: 20px; }; h1 { font-size: 2rem; }`，`h1` 的字体大小是多少`px`？
 
 <details>
 <summary>参考答案</summary>
 <ol>
-<li>`>` 选择直接子元素（孙子元素不会被选中），空格选择所有后代元素（子孙元素）</li>
-<li>父容器设置 `display: flex; justify-content: center; align-items: center;`</li>
-<li>36px。rem 是相对于根元素的字体大小，根元素默认字体大小是 16px，所以 `2rem = 2 * 16px = 32px`</li>
-<li>40px。根元素字体大小被设置为 20px，所以 `2rem = 2 * 20px = 40px`</li>
+<li>&gt; 选择直接子元素（孙子元素不会被选中），空格选择所有后代元素（子孙元素）</li>
+<li>父容器设置 display: flex; justify-content: center; align-items: center;</li>
+<li>36px。rem 是相对于根元素的字体大小，根元素是 &lt;html&gt; 而不是 &lt;body&gt;，根元素默认字体大小是 16px，所以 2rem = 2 * 16px = 32px</li>
+<li>40px。根元素字体大小被设置为 20px，所以 2rem = 2 * 20px = 40px</li>
 </ol>
 </details>
