@@ -2,12 +2,12 @@
 layout: home
 
 hero:
-  name: "JinsHub Blog"
+  name: "JinsHub"
   text: ""
-  tagline: "在 JinsHub Blog 上发现技术见解。找到实用指南和深入的技术细节。"
+  tagline: "分享技术见解，实用指南和最佳实践"
   actions:
     - theme: brand
-      text: Rust
-      link: /rust-book-quizzes/introduction
+      text: Web 开发全面指南
+      link: /zh/web-dev-guide/1-hello-web
 ---
 
