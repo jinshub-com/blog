@@ -1,4 +1,6 @@
 import { defineConfig } from 'vitepress'
+import d2 from 'vitepress-plugin-d2'
+import { Layout, Theme, FileType } from 'vitepress-plugin-d2/dist/config'
 import { en } from './en'
 import { zh } from './zh'
 
@@ -10,6 +12,26 @@ export default defineConfig({
   metaChunk: true,
   markdown: {
     math: true,
+    config: (md) => {
+      md.use(d2, {
+        forceAppendix: false,
+        layout: Layout.ELK,
+        theme: Theme.NEUTRAL_DEFAULT,
+        darkTheme: Theme.DARK_MUAVE,
+        padding: 100,
+        animatedInterval: 0,
+        timeout: 120,
+        sketch: false,
+        center: false,
+        scale: -1,
+        target: "*",
+        fontItalic: null,
+        fontBold: null,
+        fontSemiBold: null,
+        fileType: FileType.SVG,
+        directory: "d2-diagrams",
+      })
+    }
   },
   sitemap: {
     hostname: 'https://blog.jinshub.com',
