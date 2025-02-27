@@ -23,7 +23,7 @@
 </head>
 <body> <!-- 文档主体 -->
   <h1>我的第一个网页</h1> <!-- 标题（Heading 1） -->
-  <p>这是一个简单的网页</p> <!-- 段落（paragraph） -->
+  <p class="strong">这是一个简单的网页</p> <!-- 段落（paragraph） -->
 </body>
 </html>
 ```
@@ -31,7 +31,7 @@
 HTML 的语法特点：
 - 标签通常成对出现，有开始和结束标签，如 `<h1>...</h1>`
 - 没有结束标签的标签称为**空元素**（Self-Closing Tag），如 `<meta charset="UTF-8">`
-- 标签可以包含属性（Attributes），用来提供更多信息，通常是键值对（key-value pair），如 `lang="zh-CN"` 表示这个网页的语言是中文
+- 标签可以包含属性（Attributes），用来提供更多信息，通常是键值对（key-value pair），如 `<p class="strong">...</p>` 表示这个段落有一个类名为 `strong`
 - 标签可以嵌套，形成树状结构
 - 标签不区分大小写，但推荐使用小写
 - 注释使用 `<!-- 注释内容 -->`
@@ -74,7 +74,13 @@ HTML 标签可以包含属性（Attributes），用来提供更多信息或控�
 
 :::tip 提示
 `class` 可能是最常用的属性，通常用于为元素添加样式或 JavaScript 操作。
-- 同一个类名可以应用到多个元素，如 `<ul><li class="file">...</li><li class="file">...</li></ul>`  
+- 同一个类名可以应用到多个元素，如 
+```html
+<ul>
+  <li class="file">HelloWorld.pdf</li>
+  <li class="file">HelloFrench.mp3</li>
+</ul>
+```  
 - 一个元素也可以应用多个类名，用空格分隔，如 `<button class="btn primary">...</button>`  
 :::
 
@@ -143,18 +149,41 @@ h1 { color: red; }
 /* ID 选择器，假设 HTML 中有 <div id="main-content">...</div> */
 #main-content { padding: 20px; }
 
-/* 子元素选择器 */
+/*
+  子元素选择器
+  假设 HTML 中有:
+  <div class="container">
+    <p>第一个段落</p>
+    <div>
+      <p>第二个段落</p>
+    </div>
+  </div>
+  下列选择器只会选择第一个段落，因为第二个段落是子元素div的子元素
+ */
 .container > p { color: blue; }
 
-/* 后代选择器 */
+/*
+  后代选择器
+  假设 HTML 中有:
+  <div class="container">
+    <p>第一个段落</p>
+    <div>
+      <p>第二个段落</p>
+    </div>
+  </div>
+  下列选择器会选择所有段落，无论嵌套多少层
+  */
 .container p { color: blue; }
 ```
 
-伪类选择器（Pseudo-classes）用于选择元素的特殊状态，如 `:hover`、`:active`、`:focus`、`:disabled` 等：
+伪类选择器（Pseudo-classes）用于选择元素的特殊状态，如 `:hover`、`:focus`、`:disabled` 等：
 
 ```css
 /* 鼠标悬停时改变颜色 */
 .button:hover { background-color: lightblue; }
+
+/* 输入框获得焦点时边框变成蓝色 */
+input:focus { border-color: blue; }
 
 /* 按钮禁用时变成灰色 */
 .button:disabled { background-color: gray; }
@@ -175,16 +204,29 @@ h1 { color: red; }
 
 #### 盒模型（Box Model）
 
-盒模型描述了 HTML 元素的尺寸和间距：
+盒模型是 CSS 中描述元素布局方式的模型，我们可以把每个元素看作一个盒子。
+
+**盒子内部**由多个区域组成，包括：
 - `content`：内容区域
 - `padding`：内边距，内容与边框之间的距离
 - `border`：边框，包围内容和内边距
 - `margin`：外边距，元素与元素之间的距离
 
-:::info 盒模型有什么用？
-- 控制元素的尺寸和间距
-  - 默认情况下，`width` 和 `height` 设置的是内容区域的尺寸（不包含 padding 和 border）
-  - 可以把 `box-sizing: border-box;` 应用到元素，使 `width` 和 `height` 包含 padding 和 border
+**盒子内部**元素的排列方式有多种：
+- 标准流（Normal Flow）：默认情况下，内部元素按照从上到下、从左到右排列
+- 弹性布局（Flex）：内部元素排列方式更灵活，可以水平、垂直居中等。Flex 布局很常用，后面会再单独介绍[常见用法](#flex-弹性布局)
+- 定位（Position）：可以使内部元素脱离标准文档流，相对于其他元素定位，例如让导航栏固定显示在顶部。`position` 只是偶尔会用到，此课程不会详细讲解，需要的时候可以查看 [MDN 定位文档](https://developer.mozilla.org/zh-CN/docs/Web/CSS/position)
+
+**盒子外部**有两种显示方式：
+- 区块盒子（Block Boxes）：每个元素独占一行，如 `<div>`、`<p>`、`<h1>` 等默认是区块盒子
+- 行内盒子（Inline Boxes）：多个元素在一行内显示，如 `<span>`、`<a>`、`<img>` 等默认是行内盒子
+
+:::info 提示
+- 可以通过 CSS 属性 `display` 改变任何元素的外部显示方式，如 `display: block;` 让元素变成区块盒子（多个元素之间会换行），`display: inline;` 让元素变成行内盒子（多个元素不换行）
+  - display 属性有很多值，除了 `block` 和 `inline`，常用的还有 `flex`（内部使用弹性布局）、`none`（隐藏整个元素）
+- 如果需要精确控制元素的宽高，需要注意不同的盒模型会影响元素的宽高计算，如：
+  - 默认情况下浏览器按照“标准盒模型”显示元素，`width` 和 `height` 属性设置的是内容区域（content）的宽高
+  - 如果把元素改为“替代盒模型”，如 `box-sizing: border-box;`，那么 `width` 和 `height` 就变成设置总体区域（content + padding + border）的宽高
 :::
 
 [更多关于盒模型的解释](https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Building_blocks/The_box_model)
@@ -196,8 +238,8 @@ Flex 布局是一种弹性布局模型，可以轻松实现元素的水平、垂
 ```css
 .container {
   display: flex;           /* 使用弹性布局 */
-  justify-content: center; /* 主轴居中对齐，主轴默认水平方向 */
-  align-items: center;     /* 交叉轴居中对齐，交叉轴默认垂直方向 */
+  justify-content: center; /* 主轴居中对齐，主轴默认指的是水平方向 */
+  align-items: center;     /* 交叉轴居中对齐，交叉轴默认指的是垂直方向 */
   gap: 20px;               /* 元素间距 */
 }
 ```
@@ -335,14 +377,17 @@ CSS 属性非常多，全部记住并不现实，可以在需要时查阅文档�
 
 #### 图标（使用 Font Awesome）
 
-图标可以在 [Font Awesome](https://fontawesome.com/v6/icons) 查找。如 [`code` 图标](https://fontawesome.com/search?q=code&o=r)：
+图标可以在 [Font Awesome](https://fontawesome.com/v6/icons) 查找，如 [`code` 图标](https://fontawesome.com/search?q=code&o=r)。使用方法如下：
 
 ```html
-<!-- 在 head 引入图标库 -->
+<!-- 在 head 标签中引用 Font Awesome 图标库的 CSS 代码 -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-<!-- 使用图标 -->
+<!-- 使用图标，用 i 标签加上两个类名： fa-solid 和 fa-<图标名字> -->
+<!-- 代码图标 -->
 <i class="fa-solid fa-code"></i>
+<!-- 小房子图标 -->
+<i class="fa-solid fa-house"></i>
 ```
 
 #### 文件列表（列表布局）
@@ -392,13 +437,24 @@ CSS 属性非常多，全部记住并不现实，可以在需要时查阅文档�
 
 ### 3.3 进阶挑战（Bonus）
 
-- 还原 GitHub 的暗色主题（Dark Mode）
-
-### 3.4 实现提示
-1. 使用 CSS 变量定义两套颜色主题，包括背景色、文本颜色等
-2. 默认使用浅色主题，使用 `@media (prefers-color-scheme: dark) { ... }` 检测系统主题为 dark 时，使用暗色主题
+- 尽量还原 GitHub 的暗色主题（Dark Mode）
 
 [更多关于 Dark Mode 的实现](https://developer.mozilla.org/zh-CN/docs/Web/CSS/@media/prefers-color-scheme)
+
+:::tip 实现提示
+1. 使用 CSS 变量定义两套颜色主题，包括背景色、文本颜色等
+2. 默认使用浅色主题，使用 `@media (prefers-color-scheme: dark) { ... }` 检测系统主题为 dark 时，使用暗色主题
+3. 不需要跟 GitHub 完全一样，类似即可
+:::
+
+### 3.4 超级巨大的挑战（Huge Bonus）
+
+- 尽量还原[思培模拟考试听力界面](https://instructionalproducts.paragontesting.ca/InstructionalProducts/FreeOnlineSampleTest/FOST/View/e45fede0-af73-4d3e-a580-750b106fb3f0)
+- 不需要实现任何交互功能，比如点击播放等功能，只模仿界面布局和样式即可
+
+:::tip 实现提示
+本课程只介绍了最常用的知识点（HTML 和 CSS 知识点实在是太多了！），遇到不知道该怎么实现的界面，最高效的办法是直接问身边有经验的人或者 LLM，其次是去 Google 搜索。另外 [MDN 文档](https://developer.mozilla.org/zh-CN/docs/Web)提供了全面且准确的 Web 开发资料。
+:::
 
 ## 四、课后练习
 1. CSS 选择器 `.nav > li` 和 `.nav li` 有什么区别？
