@@ -39,6 +39,7 @@ export const zh = defineConfig({
             collapsed: false,
             items: [
               { text: 'HTML & CSS', link: '2-frontend-fundamentals-html-css' },
+              { text: 'JavaScript 基础', link: '3-frontend-fundamentals-js-1' },
             ]
           },
         ]
