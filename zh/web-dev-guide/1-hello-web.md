@@ -10,7 +10,7 @@
 3. 掌握基础开发工具链
 4. 完成首个网页部署
 
-## 一、网页应用组成
+## 1. 网页应用组成
 
 ### 1.1 核心组件
 ```d2
@@ -27,7 +27,7 @@ direction: right
 - **互联网（Internet）**：连接世界各地计算机的网络
 - **HTTP**：浏览器与服务器通信的协议（规则）
 
-## 二、网页开发分类
+## 2. 网页开发分类
 
 - **前端（Frontend）**：开发用户界面和交互（图文、按钮），代码运行在**浏览器**（Browser）中，常用语言如 HTML、CSS、JavaScript。
 - **后端（Backend）**：开发服务端逻辑（用户数据存储），代码运行在**服务器**（Server）中，常用语言如 Python、JavaScript。
@@ -40,7 +40,7 @@ direction: right
 前端 -> 用户: 显示结果
 ```
 
-## 三、开发工具配置
+## 3. 开发工具配置
 
 ### 3.1 基础工具
 1. **VS Code**：代码编辑器。[去官网下载](https://code.visualstudio.com/)
@@ -79,7 +79,7 @@ cat ~/.ssh/id_ed25519.pub
 大模型编程能力进化迅速，擅长编程的模型在不断变化。可以在 [Aider LLM Leaderboards](https://aider.chat/docs/leaderboards/) 查看最新排名。
 :::
 
-## 四、实战作业
+## 4. 实战作业
 
 ### 4.1 用 LLM 生成 HTML
 示例提示词：
@@ -160,7 +160,7 @@ URL 是统一资源定位符（Uniform Resource Locator）的缩写，是互联�
 - `index.html`：文件名，省略时默认访问 index.html 文件
 :::
 
-## 五、课后练习
+## 5. 课后练习
 1. 用 LLM 生成一个包含链接的网页，并部署到 GitHub Pages
 2. 简单介绍浏览器和服务器的作用，前端和后端的区别
 3. 你的电脑可以同时作为客户端和服务端吗？为什么？

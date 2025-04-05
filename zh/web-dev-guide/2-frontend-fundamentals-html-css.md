@@ -6,7 +6,7 @@
 3. 掌握 CSS 核心概念与响应式设计（Responsive Design）
 4. 完成 GitHub 仓库页面的模仿练习
 
-## 一、HTML：网页的骨架
+## 1. HTML：网页的骨架
 
 ### 1.1 什么是 HTML？
 - **超文本标记语言**（HyperText Markup Language）
@@ -102,7 +102,7 @@ HTML 标签可以包含属性（Attributes），用来提供更多信息或控�
 
 [更多 HTML 语义化标签](https://developer.mozilla.org/zh-CN/docs/Glossary/Semantics)
 
-## 二、CSS：网页的皮肤
+## 2. CSS：网页的皮肤
 
 ### 2.1 什么是 CSS？
 - **层叠样式表**（Cascading Style Sheets）
@@ -319,7 +319,7 @@ h1 { color: rgb(255, 0, 0); }
 CSS 属性非常多，全部记住并不现实，可以在需要时查阅文档，或者直接问 LLM，如 `我想让一组按钮（class="my-button"）水平排列，按钮之间有 20px 间距，水平方向向左对齐，垂直方向居中对齐，屏幕空间不够时自动换行，怎么写 CSS？`
 :::
 
-## 三、实战作业：模仿 GitHub 仓库页面
+## 3. 实战作业：模仿 GitHub 仓库页面
 
 ### 3.1 要求
 1. 选择一个 GitHub 开源项目仓库，如 [You-need-to-know-css](https://github.com/l-hammer/You-need-to-know-css)，模仿实现该仓库的页面布局，由于元素较多，只实现部分内容即可：
@@ -456,7 +456,7 @@ CSS 属性非常多，全部记住并不现实，可以在需要时查阅文档�
 本课程只介绍了最常用的知识点（HTML 和 CSS 知识点实在是太多了！），遇到不知道该怎么实现的界面，最高效的办法是直接问身边有经验的人或者 LLM，其次是去 Google 搜索。另外 [MDN 文档](https://developer.mozilla.org/zh-CN/docs/Web)提供了全面且准确的 Web 开发资料。
 :::
 
-## 四、课后练习
+## 4. 课后练习
 1. CSS 选择器 `.nav > li` 和 `.nav li` 有什么区别？
 2. 如何实现元素水平垂直居中？
 3. 假设有 CSS 代码 `body { font-size: 20px; }; h1 { font-size: 2rem; }`，`h1` 的字体大小是多少`px`？
