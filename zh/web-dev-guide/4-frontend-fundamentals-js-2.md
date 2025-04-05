@@ -7,8 +7,6 @@
 4. 学习模块化开发（import/export）
 5. 利用 Node.js + npm + Vite 创建和运行项目
 
-## 第四课：前端基础 - JavaScript 进阶
-
 ## 1. ES6+ 核心特性
 
 ### 解构赋值 (Destructuring Assignment)
@@ -258,10 +256,15 @@ npm run dev
     ```
 
 3. 小型实战项目：使用 Vite 创建一个简单的待办事项应用，功能包括：
-   - 使用 Fetch API 从服务器获取一条代办事项并显示在第一条任务列表中。可以使用这个后端接口（API） `https://jsonplaceholder.typicode.com/todos/1` 
+   - 使用 Fetch API 从后端获取 3 条代办事项并显示在列表中。
+     - 使用这个后端接口（Endpoint） `https://jsonplaceholder.typicode.com/todos/${id}` 
+     - 三条代办事项的 id 分别是 1, 2, 3，点击下面的三个链接可以预览它们返回的数据：
+       - https://jsonplaceholder.typicode.com/todos/1
+       - https://jsonplaceholder.typicode.com/todos/2
+       - https://jsonplaceholder.typicode.com/todos/3
    - 列表显示所有任务
-   - 点击按钮添加新任务（不需要保存到服务器，点击按钮后显示一条新的代办事项就可以）
-   - 点击按钮删除第一个任务
+   - 点击“添加”按钮添加新任务（不需要保存到服务器，点击按钮后显示一条新的代办事项就可以，内容为“新任务”）
+   - 点击“删除”按钮删除第一个任务
 
 ## 参考答案
 
